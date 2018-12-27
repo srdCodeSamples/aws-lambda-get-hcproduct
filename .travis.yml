@@ -6,3 +6,16 @@ mono: none
 solution: aws-lambda-get-hcproduct.sln
 script:
 - dotnet test test/AwsGetHcProduct.Test/AwsGetHcProduct.Test.csproj
+before_deploy:
+- dotnet publish -c Release --force src/AwsGetHcProduct/AwsGetHcProduct.csproj -o
+  ../../lambda-get-hcproduct
+- zip -r9 lambda-get-hcproduct.zip lambda-get-hcproduct
+deploy:
+  provider: releases
+  on:
+    repo: srdCodeSamples/aws-lambda-get-hcproduct
+    tags: true
+  file: lambda-get-hcproduct.zip
+  skip_cleanup: true
+  api_key:
+    secure: WAmYeF5fRS2lxs4wuqb44TNH3GcZ05guT+WRSxAg74L+M7gL1XmHcfT7K+E2lEeSzVbryiZXyo7n8KGYo0VXoMABVANag8xuS9EEZ1wyaUskolNP0HQN3ijdNIT+SDuob8kGOQzaNhWa5aGxO9U5BdZ5J/yk1O8yAiiZ10GXZTfwrCTVJL8dBSefNVUjpUASJMtyEOAmFi9koKlIUpYAbiL28XSNjuBqwABCSbYBsZulg1YLKZ6bIl0f0Ce6V7+dBVCVqfv6rlGLMqUXhoAnH+6aUf33HYF+l+VaUwvL5kMLRyvGUfOUjo2pk31NkHdXSW1yMu6YjbJYqK8D4//eMKmyqzk3cO5dwnV0qCCr2CEjl2IQ/priM0A5haMeSshtGHk+HOSbeeQJixVkXT40GjkJeoVjXVyxGYwoESCAZRkEGnCpbkpbyXj/pc8r/BvHWlEzvH5pRjxgOdSVlaUlsqfnG4qeJUhZs+eHb8hP26QzPpqkBd5oe6V0hco75DqDfnc35ahNlePxYqXjor1NnSMh84e9IS0Bch280scEL1gynjqONnpR4OHxbpsJfypR/xaDihUecwdtpVNaIpdvM8srxpROVeU1M4SV2saYU/PMfc/lXGDKcpJk6AJZlpHK9Y00vNGgN+FAeCohEnvLvTksK6OriHJHlTUfdbujtuk=
