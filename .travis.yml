@@ -1,0 +1,8 @@
+dist: xenial
+sudo: required
+language: csharp
+dotnet: 2.1.500
+mono: none
+solution: aws-lambda-get-hcproduct.sln
+script:
+- dotnet test test/AwsGetHcProduct.Test/AwsGetHcProduct.Test.csproj
