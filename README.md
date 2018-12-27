@@ -13,9 +13,9 @@ The input object for the function should be:
 
 ```JSON
 {
-	"product": "required HC product"
-	"os": "required OS"
-	"arch": "required architecture"
+	"product": "required HC product",
+	"os": "required OS",
+	"arch": "required architecture",
 	"version": "required version or 'latest'" 
 }
 ```
