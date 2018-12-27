@@ -9,7 +9,7 @@ script:
 before_deploy:
 - dotnet publish -c Release --force src/AwsGetHcProduct/AwsGetHcProduct.csproj -o
   ../../lambda-get-hcproduct
-- zip -r9 lambda-get-hcproduct.zip lambda-get-hcproduct
+- zip -r9 lambda-get-hcproduct.zip lambda-get-hcproduct/*
 deploy:
   provider: releases
   on:
