@@ -1,0 +1,3 @@
+[submodule "src/lib-hc-get-build"]
+	path = src/lib-hc-get-build
+	url = https://github.com/srdCodeSamples/lib-hc-get-build.git
