@@ -23,9 +23,9 @@ namespace AwsGetHcProduct.Test
         {
             Input input = new Input
             {
-                Product = "terraform",
-                Os = "linux",
-                Arch = "amd64"
+                Product = "Terraform",
+                Os = "Linux",
+                Arch = "Amd64"
             };
             string result = String.Empty;
 
