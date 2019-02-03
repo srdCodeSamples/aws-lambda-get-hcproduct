@@ -5,7 +5,7 @@ dotnet: 2.1.500
 mono: none
 solution: aws-lambda-get-hcproduct.sln
 script:
-- dotnet test test/AwsGetHcProduct.Test/AwsGetHcProduct.Test.csproj
+- dotnet test test/AwsGetHcProduct.Tests/AwsGetHcProduct.Test.csproj
 before_deploy:
 - dotnet publish -c Release --force src/AwsGetHcProduct/AwsGetHcProduct.csproj -o
   ../../lambda-get-hcproduct
