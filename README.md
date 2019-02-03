@@ -20,3 +20,16 @@ The input object needed by the function is:
 	"version": "required version or 'latest'" 
 }
 ```
+## Vagrant VM
+
+Included is a Vagrant configuration for building a VirtualBox VM. The VM runs Ubuntun/Xenial OS with .Net Core, Terraform and some other basic tools installed.
+
+### Prerequisites
+
+* Install VirtualBox - [instructions](https://www.virtualbox.org/wiki/Downloads)
+* Install Vagrant - [instructions](https://www.vagrantup.com/downloads.html)
+
+### Run Vagrant
+
+* Build VM - `vagrant up`
+* Login to VM - `vagrant ssh`
