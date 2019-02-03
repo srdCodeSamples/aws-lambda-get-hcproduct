@@ -27,6 +27,12 @@ namespace AwsGetHcProduct
                 throw new ArgumentNullException();
             }
 
+            // Make sure input is lowercase
+            input.Arch = input.Arch.ToLower();
+            input.Os = input.Os.ToLower();
+            input.Product = input.Product.ToLower();
+            input.Version = input.Version.ToLower();
+
             // Get HC releases data for the requested product
             HcReleaseData hcData = null;
             hcData = HcHelpers.GetHcProductReleasesData(input.Product).Result;
