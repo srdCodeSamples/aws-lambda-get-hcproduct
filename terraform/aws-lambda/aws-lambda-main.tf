@@ -1,6 +1,10 @@
+terraform {
+  required_version = "~> 0.12.0"
+}
+
 resource "aws_lambda_function" "function" {
   filename         = "${var.function_code_file}"
-  source_code_hash = "${base64sha256(file(var.function_code_file))}"
+  source_code_hash = "${filebase64sha256(var.function_code_file)}"
   function_name    = "${var.function_name}"
   runtime          = "dotnetcore2.1"
   role             = "${aws_iam_role.function_role.arn}"
