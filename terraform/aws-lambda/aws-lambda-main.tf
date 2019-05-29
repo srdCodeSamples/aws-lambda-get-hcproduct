@@ -9,6 +9,7 @@ resource "aws_lambda_function" "function" {
   runtime          = "dotnetcore2.1"
   role             = "${aws_iam_role.function_role.arn}"
   handler          = "AwsGetHcProduct::AwsGetHcProduct.Function::FunctionHandler"
+  timeout          = "60"
 }
 
 // IAM Role for function
