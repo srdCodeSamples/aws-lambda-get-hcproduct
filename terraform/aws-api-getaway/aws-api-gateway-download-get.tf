@@ -28,7 +28,7 @@ resource "aws_api_gateway_integration" "lambda_integration" {
   timeout_milliseconds    = 29000
   uri                     = "${var.lambda_invoke_arn}"
   request_templates = {
-    "application/json" = "${file("templates/input-map.json")}"
+    "application/json" = "${file("${path.module}/templates/input-map.json")}"
   }
   passthrough_behavior = "NEVER"
 }
@@ -67,8 +67,11 @@ resource "aws_api_gateway_integration_response" "download-get-301" {
     "method.response.header.Location" = "integration.response.body"
   }
   response_templates = {
-    "text/html" = "${file("templates/redirect.html")}"
+    "text/html" = "${file("${path.module}/templates/redirect.html")}"
   }
+  depends_on = [
+    "aws_api_gateway_integration.lambda_integration"
+  ]
 }
 
 resource "aws_api_gateway_integration_response" "download-get-500" {
@@ -78,6 +81,9 @@ resource "aws_api_gateway_integration_response" "download-get-500" {
   status_code       = "${aws_api_gateway_method_response.download-get-500.status_code}"
   selection_pattern = "^(?!http).+$"
   response_templates = {
-    "application/json" = "${file("templates/output-error.json")}"
+    "application/json" = "${file("${path.module}/templates/output-error.json")}"
   }
+  depends_on = [
+    "aws_api_gateway_integration.lambda_integration"
+  ]
 }
