@@ -17,7 +17,7 @@ variable "function_name" {
 
 variable "function_code_file" {
   type        = "string"
-  description = "path to the file containig the labda. On consecutive applies the function will be re-deployed if the file is not the same (even if contetns are not changed)."
+  description = "path to the file containig the lambda. On consecutive applies the function will be re-deployed if the file is not the same (even if contetns are not changed)."
 }
 
 variable "aws_region" {
