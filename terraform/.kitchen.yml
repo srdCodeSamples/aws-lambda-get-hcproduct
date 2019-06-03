@@ -1,0 +1,23 @@
+---
+driver:
+  name: terraform
+  variable_files:
+    - test.tfvars
+
+provisioner:
+  name: terraform
+
+platforms:
+  - name: api
+
+verifier:
+  name: terraform
+  format: doc
+  systems:
+    - name: default
+      backend: local
+      controls:
+        - aws_apigw_output
+
+suites:
+  - name: default
