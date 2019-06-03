@@ -1,0 +1,6 @@
+{
+	"product": "$method.request.querystring.product",
+	"os": "$method.request.querystring.os",
+	"arch": "$method.request.querystring.arch",
+	"version": "$method.request.querystring.version" 
+}

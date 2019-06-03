@@ -1,0 +1,8 @@
+---
+name: API tests
+description: Tests the responses from the AWS API GW
+version: 0.1.0
+
+attributes:
+  - name: download_url
+    type: string
