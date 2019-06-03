@@ -8,3 +8,7 @@ obj/
 .terraform/
 *.tfstate*
 downloads/
+.kitchen/
+.ruby-version
+Gemfile.lock
+inspec.lock
