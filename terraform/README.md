@@ -1,5 +1,7 @@
 # Get HC product Lambda - Terraform
 
+[![Build Status](https://travis-ci.org/srdCodeSamples/aws-lambda-get-hcproduct.svg?branch=master)](https://travis-ci.org/srdCodeSamples/aws-lambda-get-hcproduct)
+
 A terraform project to deploy the get-hc-product lambda function to AWS and configure an API gateway to work with it.
 
 ## Prerequisites
