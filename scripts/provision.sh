@@ -2,7 +2,7 @@
 # Install needed software and basic configs
 
 # Terraform version
-export TF_VERSION="0.11.11"
+export TF_VERSION="0.12.3"
 
 # Add Microsoft repository to apt
 wget -q -P /tmp https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
