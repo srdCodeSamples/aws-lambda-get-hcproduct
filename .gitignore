@@ -7,8 +7,10 @@ obj/
 .vagrant/
 .terraform/
 *.tfstate*
-downloads/
 .kitchen/
 .ruby-version
 Gemfile.lock
 inspec.lock
+lambda-get-hcproduct.zip
+.bundle/
+vendor/
