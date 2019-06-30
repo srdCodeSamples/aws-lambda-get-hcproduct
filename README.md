@@ -1,5 +1,8 @@
 # AWS Lambda - Get HC Product
 
+[![Build Status](https://travis-ci.org/srdCodeSamples/aws-lambda-get-hcproduct.svg?branch=master)](https://travis-ci.org/srdCodeSamples/aws-lambda-get-hcproduct)
+
+
 A .NetCore AWS Lambda function to get the url of an HC product build.
 
 This is an implemntation of [this](https://github.com/srdCodeSamples/lib-hc-get-build) library in an AWS Lambda function. The library repository is added asgit submodule to the project.
