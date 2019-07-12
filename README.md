@@ -5,7 +5,7 @@
 
 A .NetCore AWS Lambda function to get the url of an HC product build.
 
-This is an implemntation of [this](https://github.com/srdCodeSamples/lib-hc-get-build) library in an AWS Lambda function. The library repository is added asgit submodule to the project.
+This is an implemntation of [this](https://github.com/srdCodeSamples/lib-hc-get-build) library in an AWS Lambda function. The library repository is added as git submodule to the project.
 
 ## Usage
 
@@ -23,6 +23,9 @@ The input object needed by the function is:
 	"version": "required version or 'latest'" 
 }
 ```
+
+In the `terraform` folder there is a terraform project which can be used to deply the lambda and the needed AWS infrastructure.
+
 ## Vagrant VM
 
 Included is a Vagrant configuration for building a VirtualBox VM. The VM runs Ubuntun/Xenial OS with .Net Core, Terraform and some other basic tools installed.
