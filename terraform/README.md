@@ -42,7 +42,7 @@ Changes to the variables achieves a step from the AWS API Gateway deployment pro
 
 1. Make changes in terraform to the API Gateway resources configuration.
 2. Add an item to the `api_deployments` list to create a new deployment.
-3. Change the value of `prod_deployment_id` to point to the index of new deployment in the `api_deployments` list.
+3. Change the value of `prod_deployment_id` to the index of new deployment in the `api_deployments` list. This will point the `prod` stage to the new deployment.
 
 Steps can be done in one or several `terraform apply` runs.
 
