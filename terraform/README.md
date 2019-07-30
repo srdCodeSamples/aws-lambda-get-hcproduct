@@ -4,6 +4,16 @@
 
 A terraform project to deploy the get-hc-product lambda function to AWS and configure an API gateway to work with it.
 
+After the terraform configuration is applied it will return an AWS API Gatway endpoint and a download urls. To use it to download an HashiCorp product need to construct an url like:
+
+`:download_url?product=:hc_product&os=:required_os&arch=:cpu_architecture&version=:version`
+
+The version parameter can be omitted in which case the latest stable versoin will be downloaded.
+
+Example - download the latest terraform version for linux/x64:
+
+`https://2z00jwdb78.execute-api.eu-central-1.amazonaws.com/prod/download?product=terraform&os=linux&arch=amd64`
+
 ## Prerequisites
 
 * Install [terraform](https://www.terraform.io/downloads.html) 0.12.0 or later.
