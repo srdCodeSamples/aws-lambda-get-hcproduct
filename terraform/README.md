@@ -4,11 +4,11 @@
 
 A terraform project to deploy the get-hc-product lambda function to AWS and configure an API gateway to work with it.
 
-After the terraform configuration is applied it will return an AWS API Gatway endpoint and a download urls. To use it to download an HashiCorp product need to construct an url like:
+After the terraform configuration is applied it will return an AWS API Gateway endpoint and a download urls. To use it to download an HashiCorp product you need to construct an url like:
 
 `:download_url?product=:hc_product&os=:required_os&arch=:cpu_architecture&version=:version`
 
-The version parameter can be omitted in which case the latest stable versoin will be downloaded.
+The version parameter can be omitted in which case the latest stable version will be downloaded.
 
 Example - download the latest terraform version for linux/x64:
 
@@ -28,23 +28,25 @@ Example - download the latest terraform version for linux/x64:
 AWS process of deploying changes to the API Gateway is as follows:
 
 1. Make changes to the gateway properties - resources, methods etc.
-2. Rollout the changes by creating a "deployment". This represent the API Gateway configuration at the time of the deployment creation.
+2. Rollout the changes by creating a "deployment". This represents the API Gateway configuration at the time of the deployment creation.
 3. Point one or more stages to this deployment.
 
 The deployments are stored and so any stage can be pointed to any deployment as needed.
 
 To handle this process the terraform configuration uses the `api_deployments` and `prod_deployment_id` variables.
 
-* `api_deployments` - a list of description of deployments. Every time an item is added to the list a new deployment is created. Removing items from the list is not possible as terraform would destroy the last list item and not the exact deployment that was removed.
+* `api_deployments` - a list of descriptions of deployments. Every time an item is added to the list a new deployment is created. Removing items from the list is not possible as terraform would destroy the last list item and not the exact deployment that was removed.
 * `prod_deployment_id` - represents the list index of the deployment that the prod stage points to. The indexing starts from 0.
 
-Changes to the variables achieves a step from the AWS API Gateway deployment process like:
+Changes to the variables achieve a step from the AWS API Gateway deployment process:
 
 1. Make changes in terraform to the API Gateway resources configuration.
 2. Add an item to the `api_deployments` list to create a new deployment.
 3. Change the value of `prod_deployment_id` to the index of new deployment in the `api_deployments` list. This will point the `prod` stage to the new deployment.
 
-Steps can be done in one or several `terraform apply` runs.
+Step `1` should be performed in a separate `terraform apply` run to guarantee that all changes to the API Gateway resources are completed before the deployment is created.
+
+Steps `2` and `3` can then be performed in a single or separate runs as needed.
 
 ## Running terraform
 
@@ -81,4 +83,4 @@ The project includes a test with KitchenCI.
 ### Test limitations
 
 * The test checks the responses of the API Gateway created by terraform. It could potentially be broken by errors in the lambda function code itself and not in the terraform configuration!
-* If running several tests in parallel you need to provide unique values for the terraform input variables => unique `test.tfvars` for each test. Otherwise resources will not be created as the variable values are used to set resource properties that must be unique (at least per AWS region).
+* If running several tests in parallel you need to provide unique values for the terraform input variables => unique `test.tfvars` for each test. Otherwise resource creation may fail as the variable values are used to set resource properties that must be unique (at least per AWS region).
