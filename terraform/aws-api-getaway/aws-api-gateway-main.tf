@@ -19,10 +19,16 @@ resource "aws_api_gateway_resource" "download" {
   path_part   = "download"
 }
 
-resource "aws_api_gateway_deployment" "prod" {
-  depends_on = [aws_api_gateway_integration.lambda_integration]
-
+resource "aws_api_gateway_deployment" "deployments" {
+  count       = length(var.api_deployments)
+  depends_on  = [aws_api_gateway_integration.lambda_integration]
+  description = var.api_deployments[count.index]
   rest_api_id = aws_api_gateway_rest_api.API.id
-  stage_name  = "prod"
+}
+
+resource "aws_api_gateway_stage" "prod" {
+  stage_name    = "prod"
+  rest_api_id   = aws_api_gateway_rest_api.API.id
+  deployment_id = aws_api_gateway_deployment.deployments[var.prod_deployment_id].id
 }
 

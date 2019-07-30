@@ -19,3 +19,14 @@ variable "lambda_invoke_arn" {
   description = "the lambda function invokation arn to use for the API gatway integration"
 }
 
+variable "api_deployments" {
+  type        = list
+  description = "a list representing deployments of the API. Every time an item is added a new deployment will be created. Do not remove items once created"
+  default     = ["v0.1.0"]
+}
+
+variable "prod_deployment_id" {
+  type        = number
+  description = "The index in the api_deployments list of the deployment to associate with the prod stage."
+  default     = 0
+}
