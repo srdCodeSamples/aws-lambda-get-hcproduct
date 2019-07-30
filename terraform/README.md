@@ -35,8 +35,8 @@ The deployments are stored and so any stage can be pointed to any deployment as 
 
 To handle this process the terraform configuration uses the `api_deployments` and `prod_deployment_id` variables.
 
-`api_deployments` - a list of description of deployments. Every time an item is added to the list a new deployment is created. Removing items from the list is not possible as terraform would destroy the last list item and not the exact deployment that was removed.
-`prod_deployment_id` - represents the list index of the deployment that the prod stage points to. The indexing starts from 0.
+* `api_deployments` - a list of description of deployments. Every time an item is added to the list a new deployment is created. Removing items from the list is not possible as terraform would destroy the last list item and not the exact deployment that was removed.
+* `prod_deployment_id` - represents the list index of the deployment that the prod stage points to. The indexing starts from 0.
 
 Changes to the variables achieves a step from the AWS API Gateway deployment process like:
 
