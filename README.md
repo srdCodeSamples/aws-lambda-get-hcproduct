@@ -24,7 +24,7 @@ The input object needed by the function is:
 }
 ```
 
-In the `terraform` folder there is a terraform project which can be used to deply the lambda and the needed AWS infrastructure.
+In the `terraform` folder there is a terraform project which can be used to deploy the lambda and the needed AWS infrastructure.
 
 ## Vagrant VM
 
